@@ -15,21 +15,8 @@ use App\Http\Controllers\SeriesController;
 |
 */
 
-Route::get('/', function () {
-    $series = [
-        'Grey\'s Anatomy',
-        'Lost',
-        'Agents of SHIELD'
-    ];
 
-    $html = "<ul>";
-    foreach ($series as $serie){
-        $html .="<li>$serie</li>";
-    }
-    $html .= "</ul>";
-
-    return $html;
-});
-Route::get('/series'             , 'SeriesController@index');
-Route::get('/series/criar'             , 'SeriesController@create');
+Route::get('/series'                    , 'SeriesController@index')->name('listar_series');
+Route::get('/series/criar'              , 'SeriesController@create')->name('form_criar_serie');
 Route::post('/series/criar'             , 'SeriesController@store');
+Route::delete('/series/{id}'            , 'SeriesController@destroy');
